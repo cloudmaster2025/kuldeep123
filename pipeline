@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+  stages{
+    stage ('Pull'){
+     steps{
+      git 'https://github.com/cloudmaster2025/sonar.git'
+     }
+    }
+    stage{
+     steps ('Build'){
+       sh '/opt/maven/bin/mvn  clean package'
+     }
+    }
+    stage{
+     steps ('Test'){
+       echo 'Tested'
+     }
+    }
+    stage{
+     steps ('Deploy'){
+      echo 'deployed'
+     }
+    }
+
+  }
+}
